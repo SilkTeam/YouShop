@@ -13,6 +13,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YouShop.DAL", "YouShop.DAL\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YouShop.BLL", "YouShop.BLL\YouShop.BLL.csproj", "{58CDFC52-CFDD-4A30-903F-87F611549A4C}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "YouShop", "YouShop", "{8EEEA563-5833-491B-98AD-99586EFE0029}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Manage", "YouShop.WebUI\YouShop\Manage\Manage.csproj", "{2CC7F60C-6998-4767-96DB-26FD7197DC6B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,9 +43,16 @@ Global
 		{58CDFC52-CFDD-4A30-903F-87F611549A4C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{58CDFC52-CFDD-4A30-903F-87F611549A4C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{58CDFC52-CFDD-4A30-903F-87F611549A4C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2CC7F60C-6998-4767-96DB-26FD7197DC6B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2CC7F60C-6998-4767-96DB-26FD7197DC6B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2CC7F60C-6998-4767-96DB-26FD7197DC6B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2CC7F60C-6998-4767-96DB-26FD7197DC6B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{2CC7F60C-6998-4767-96DB-26FD7197DC6B} = {8EEEA563-5833-491B-98AD-99586EFE0029}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D2A19A44-58E6-4CDF-8618-121FA44E25FF}
