@@ -13,8 +13,8 @@ namespace YouShop.Model
         public int ID { get; set; }
         public string Account { get; set; }
         public string Password { get; set; }
-        public string qq_openid { get; set; }
-        public string wx_openid { get; set; }
+        public string QQ_OpenID { get; set; }
+        public string WX_OpenID { get; set; }
         public int Identity { get; set; }
     }
 }
