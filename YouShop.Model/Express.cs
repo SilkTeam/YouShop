@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 using System.ComponentModel.DataAnnotations.Schema;
-namespace WebApplication2.Models
+namespace YouShop.Model
 {
     public class Express
     {

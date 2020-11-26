@@ -15,9 +15,9 @@
     前端UI：Bootstrap + Layui
 ## 项目进度
 - [x] 需求分析
-- [x] 架构搭建 <a href='https://github.com/Skilemon'>Skilemon</a> <a href='https://github.com/15078709136'>何东忠实粉丝</a>
-- [x] 数据库设计 <a href='https://github.com/Skilemon'>Skilemon</a>
-- [ ] 登陆注册(前后台+身份认证+根据身份可切换界面)
+- [x] 架构搭建[<a href='https://github.com/Skilemon'>Skilemon</a>、<a href='https://github.com/15078709136'>何东忠实粉丝</a>]
+- [x] 数据库设计[<a href='https://github.com/Skilemon'>Skilemon</a>]
+- [ ] 登陆注册(前后台+身份认证+根据身份可切换界面+找回密码)
 - [ ] 商品搜索(未登录也可用)
 - [ ] 商品评价(买家评论卖家回复)
 - [ ] 用户订单(可查看相关信息并查看商品，同时只有一笔订单未支付)
@@ -30,5 +30,6 @@
 - [ ] 商品打折(嵌入后台+商户端商品管理)
 - [ ] 用户个人信息管理
 - [ ] 商户开通申请(商家端，商家账号不可购买自家商品)
+- [ ] 邮箱验证注册(未验证用户不可购物)
 ## 代码参考
 <a href='https://blog.csdn.net/wf824284257/article/details/78857310'>WebForm多项目跳转</a>

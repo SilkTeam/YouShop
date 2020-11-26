@@ -25,7 +25,7 @@ namespace YouShop.Model
         [ForeignKey("WalletID")]
         public Wallet Wallet { set; get; }
 
-        [ForeignKey("SinigID")]
+        [ForeignKey("SiginID")]
         public Sigin Sigin { set; get; }
     }
 }

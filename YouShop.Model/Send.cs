@@ -17,7 +17,7 @@ namespace YouShop.Model
         public bool Status { get; set; }
         public DateTime EntyTime { get; set; }
 
-        [ForeignKey("SinigID")]
+        [ForeignKey("SiginID")]
         public Sigin Sigin { set; get; }
     }
 }

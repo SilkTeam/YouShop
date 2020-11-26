@@ -15,7 +15,7 @@ namespace YouShop.Model
         public int ShopID { get; set; }
         public DateTime EntryTime { set; get; }
 
-        [ForeignKey("SinigID")]
+        [ForeignKey("SiginID")]
         public Sigin Sigin { set; get; }
 
         [ForeignKey("ShopID")]

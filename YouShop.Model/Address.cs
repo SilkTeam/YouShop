@@ -16,7 +16,7 @@ namespace YouShop.Model
         public string Phone { get; set; }
         public int SiginID { set; get; }
 
-        [ForeignKey("SinigID")]
+        [ForeignKey("SiginID")]
         public Sigin Sigin { set; get; }
     }
 }

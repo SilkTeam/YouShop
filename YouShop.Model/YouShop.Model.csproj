@@ -57,7 +57,6 @@
     <Compile Include="Star.cs" />
     <Compile Include="User.cs" />
     <Compile Include="Wallet.cs" />
-    <Compile Include="WalletLog.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
