@@ -19,6 +19,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Manage", "YouShop.WebUI\You
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Business", "YouShop.WebUI\YouShop\Business\Business.csproj", "{FA5CDF89-067C-4898-B034-FD142636720D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Service", "YouShop.WebUI\YouShop\Service\Service.csproj", "{D18019F2-DE64-439A-9EE9-F86B445B3B2B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -53,6 +55,10 @@ Global
 		{FA5CDF89-067C-4898-B034-FD142636720D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FA5CDF89-067C-4898-B034-FD142636720D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FA5CDF89-067C-4898-B034-FD142636720D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D18019F2-DE64-439A-9EE9-F86B445B3B2B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D18019F2-DE64-439A-9EE9-F86B445B3B2B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D18019F2-DE64-439A-9EE9-F86B445B3B2B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D18019F2-DE64-439A-9EE9-F86B445B3B2B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -60,6 +66,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{2CC7F60C-6998-4767-96DB-26FD7197DC6B} = {8EEEA563-5833-491B-98AD-99586EFE0029}
 		{FA5CDF89-067C-4898-B034-FD142636720D} = {8EEEA563-5833-491B-98AD-99586EFE0029}
+		{D18019F2-DE64-439A-9EE9-F86B445B3B2B} = {8EEEA563-5833-491B-98AD-99586EFE0029}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D2A19A44-58E6-4CDF-8618-121FA44E25FF}
