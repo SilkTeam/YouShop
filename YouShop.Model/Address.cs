@@ -8,22 +8,13 @@ using System.Threading.Tasks;
 
 namespace YouShop.Model
 {
-    public class User
+    public class Address
     {
         [Key]
         public int ID { get; set; }
         public string Name { get; set; }
-        public int Sex { get; set; }
-        public int Age { get; set; }
-        public string Img { get; set; }
         public string Phone { get; set; }
-        public string Email { get; set; }
-        public int WalletID { get; set; }
-        public DateTime EntryTime { get; set; }
-        public int SiginID { get; set; }
-
-        [ForeignKey("WalletID")]
-        public Wallet Wallet { set; get; }
+        public int SiginID { set; get; }
 
         [ForeignKey("SinigID")]
         public Sigin Sigin { set; get; }

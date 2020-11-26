@@ -16,5 +16,11 @@ namespace YouShop.Model
         public string QQ_OpenID { get; set; }
         public string WX_OpenID { get; set; }
         public int Identity { get; set; }
+        public List<User> Users { get; set; }
+        public List<Star> Stars { get; set; }
+        public List<Send> Sends { get; set; }
+        public List<Address> Addresses { get; set; }
+        public List<Coment> Coments { get; set; }
+        public List<MyCar> MyCars { get; set; }
     }
 }
