@@ -113,6 +113,20 @@
   <ItemGroup>
     <Folder Include="Controllers\" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\YouShop.BLL\YouShop.BLL.csproj">
+      <Project>{58cdfc52-cfdd-4a30-903f-87f611549a4c}</Project>
+      <Name>YouShop.BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\YouShop.Common\YouShop.Common.csproj">
+      <Project>{3b778486-a759-4114-bd2f-f941b9bdc600}</Project>
+      <Name>YouShop.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\YouShop.Model\YouShop.Model.csproj">
+      <Project>{99f48c53-b325-4d72-ba17-3533408ba4d3}</Project>
+      <Name>YouShop.Model</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

@@ -58,6 +58,12 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\YouShop.Model\YouShop.Model.csproj">
+      <Project>{99f48c53-b325-4d72-ba17-3533408ba4d3}</Project>
+      <Name>YouShop.Model</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
