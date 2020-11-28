@@ -211,7 +211,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\BusinessController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ManagerController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -233,7 +235,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Views\Business\" />
     <Folder Include="Views\Home\" />
+    <Folder Include="Views\Manager\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\YouShop.BLL\YouShop.BLL.csproj">

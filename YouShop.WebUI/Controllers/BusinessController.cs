@@ -4,11 +4,11 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace Business.Controllers
+namespace YouShop.WebUI.Controllers
 {
-    public class HomeController : Controller
+    public class BusinessController : Controller
     {
-        // GET: Home
+        // GET: Business
         public ActionResult Index()
         {
             return View();
