@@ -18,8 +18,7 @@ namespace YouShop.Model
         public string Img { get; set; }
         public string Phone { get; set; }
         public string Email { get; set; }
-        public int WalletID { get; set; }
-        public string Note { get; set; }
+        public int? WalletID { get; set; }
         
         public DateTime EntryTime { get; set; }
         public int SiginID { get; set; }
