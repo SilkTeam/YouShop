@@ -69,6 +69,11 @@
                         setTimeout(function () {
                             window.location.href = "/Home/Index";
                         }, 1500);
+                    } else if (res == "multi") {
+                        layer.alert("欢迎回来");
+                        setTimeout(function () {
+                            window.location.href = "/Home/Redir";
+                        }, 1500);
                     } else {
                         layer.alert(res);
                         $.post("/Home/GetCode", function (res) {

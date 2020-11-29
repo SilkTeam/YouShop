@@ -1,6 +1,13 @@
 ﻿
 @{
+    if (Session["User"] != null)
+    {
+        Layout = "~/Views/Shared/_User.cshtml";
+    }
+    else
+    {
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
     ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <h2>Index</h2>

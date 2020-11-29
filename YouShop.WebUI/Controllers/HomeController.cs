@@ -53,6 +53,7 @@ namespace YouShop.WebUI.Controllers
                 if (mod != null)
                 {
                     Session["User"] = mod;
+                    Session["Identity"] = mod.Identity;
                     return Content("success");
                 }
                 else
