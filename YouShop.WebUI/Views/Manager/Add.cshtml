@@ -1,0 +1,108 @@
+﻿
+@{
+    ViewBag.Title = "Add";
+}
+
+
+<!DOCTYPE html>
+
+
+<body style="padding:50px 100px 0 0;">
+    <div class="layui-form" action="">
+        <div class="layui-form-item">
+            <label class="layui-form-label">姓名</label>
+            <div class="layui-input-block">
+                <input type="text" name="title" id="Name" required lay-verify="required" placeholder="" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label"></label>
+            <div class="layui-input-block">
+                <input type="text" name="title" id="SiginID" required lay-verify="required" placeholder="" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">时间</label>
+            <div class="layui-input-block">
+                <input type="text" name="title" id="EmtryTime" required lay-verify="required" value="@DateTime.Now.ToShortDateString()" placeholder="" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">年龄</label>
+            <div class="layui-input-block">
+                <input type="text" name="title" id="Age" required lay-verify="required" placeholder="" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">电话</label>
+            <div class="layui-input-block">
+                <input type="text" name="title" id="Phone" required lay-verify="required" placeholder="" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">年龄</label>
+            <div class="layui-input-block">
+                <input type="text" name="title" id="WalletID" required lay-verify="required" placeholder="" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">头像</label>
+            <div class="layui-input-block">
+                <input type="text" name="title" id="Img" required lay-verify="required" placeholder="" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">邮箱</label>
+            <div class="layui-input-block">
+                <input type="text" name="title" id="Emall" required lay-verify="required" placeholder="" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">性别</label>
+            <div class="layui-input-block">
+                <input type="radio" name="sex" id="Sex" value="男" title="男">
+                <input type="radio" name="sex" value="女" title="女" checked>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <button class="layui-btn" lay-submit lay-filter="formDemo" id="btnSave">立即提交</button>
+                <button type="reset" class="layui-btn layui-btn-primary" id="btnClose">关闭</button>
+            </div>
+        </div>
+    </div>
+    <script src="~/Scripts/jquery-3.5.1.min.js"></script>
+  
+    <script src="~/Content/layui/layui.all.js"></script>
+    <script>
+        $("#btnSave").click(function () {
+            var paras = {
+                Name: $('#Name').val(),
+                Img: $('#Img').val(),
+                Emall: $('#Emall').val(),
+                Age: $('#Age').val(),
+                Sex: $('#Sex').prop('checked'),
+                EmtryTime: $('#EmtryTime').val(),
+                Phone: $('#Phone').val(),
+                WalletID: "  $('Phone').val()",
+                SiginID: $('#SiginID').val(),
+            };
+
+            if (paras.Sex == false)
+                paras.Sex = 0;
+            else
+                paras.Sex = 1;
+
+            $.post('/Member/add', paras, function (res) {
+                window.parent.winClose();
+            })
+        })
+
+        $('#btnClose').click(function () {
+            window.parent.winClose();
+        })
+    </script>
+</body>
+
+x
