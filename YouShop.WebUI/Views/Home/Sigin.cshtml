@@ -1,0 +1,77 @@
+﻿
+@{
+    ViewBag.Title = "Sigin";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>登录</h2>
+<form id="submit">
+    <div class="form-group">
+        <label>账号：</label>
+        <input type="text" class="form-control" id="Username" placeholder="请输入账号">
+    </div>
+    <div class="form-group">
+        <label>密码：</label>
+        <input type="password" class="form-control" id="Password" placeholder="请输入密码">
+    </div>
+    @if (Session["Error"] == null)
+    {
+<div class="form-group">
+    <lable>验证码：</lable>
+    <img src="@Session["AuthCode"]" style="border: solid 1px black;border-radius: 10px;" class="img-fluid" id="getCode" /><br /><br />
+    <input type="text" maxlength="4" class="form-control" id="AuthCode" placeholder="请输入验证码" />
+</div>
+        <button class="btn btn-primary">登录</button>
+    }
+    else
+    {
+        <button disabled class="btn btn-secondary">登录</button>
+    }
+</form>
+@section scripts{
+    @if (Session["Error"] != null)
+    {
+        <script>
+            $(function () {
+                layer.alert("验证码加载失败，请重试！<br>错误信息：<br>@Html.Raw(ViewBag.Error)");
+            });
+        </script>
+    }
+    <script>
+        $("#getCode").click(function () {
+            layer.load(2, { shade: false });
+            $.post("/Home/GetCode", function (res) {
+                setTimeout(function () {
+                    layer.closeAll('loading');
+                }, 350);
+                $("#getCode").attr('src', res);
+            });
+        });
+        $("#submit").submit(function () {
+            layer.load(2, { shade: false });
+            var data = {
+                Username: $("#Username").val(),
+                Password: $("#Password").val(),
+                AuthCode: $("#AuthCode").val(),
+            };
+            $.post("/Home/Sigin", data, function (res) {
+                setTimeout(function () {
+                    layer.closeAll('loading');
+                }, 350);
+                if (res == "success") {
+                    layer.alert("登录成功");
+                    setTimeout(function () {
+                        window.location.href = "/Home/Index";
+                    }, 1500);
+                } else {
+                    layer.alert(res);
+                    $.post("/Home/GetCode", function (res) {
+                        $("#getCode").attr('src', res);
+                    });
+                    $("#Password").val("");
+                    $("#AuthCode").val("");
+                };
+            });
+            return false;
+        });
+    </script>
+}

@@ -8,7 +8,7 @@ using YouShop.Model;
 
 namespace YouShop.BLL
 {
-    public class userBLL
+    public class UserBLL
     {
         /// <summary>
         /// 初始化EF
@@ -28,7 +28,7 @@ namespace YouShop.BLL
         /// </summary>
         /// <param name="sigin"></param>
         /// <returns></returns>
-        public Sigin Sigin(Sigin sigin)
+        public Sigin GetSign(Sigin sigin)
         {
             return EF.Sigins.FirstOrDefault(x => x.Account == sigin.Account && x.Password == sigin.Password || x.QQ_OpenID == sigin.QQ_OpenID || x.WX_OpenID == sigin.WX_OpenID);
         }
@@ -38,7 +38,7 @@ namespace YouShop.BLL
         /// <param name="sigin"></param>
         /// <param name="user"></param>
         /// <returns></returns>
-        public bool Register(Sigin sigin, User user)
+        public bool GetReg(Sigin sigin, User user)
         {
             var member = new Sigin()
             {
