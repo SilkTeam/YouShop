@@ -62,5 +62,24 @@ namespace YouShop.BLL
             EF.Sigins.Add(member);
             return EF.SaveChanges() > 0;
         }
+        /// <summary>
+        /// 找回密码
+        /// </summary>
+        /// <param name="email"></param>
+        /// <param name="sigin"></param>
+        /// <returns></returns>
+        public bool RestPWD(string email, Sigin sigin)
+        {
+            var mod = EF.Sigins.FirstOrDefault(x => x.Account == sigin.Account);
+            if (mod != null)
+            {
+                var user = EF.Users.FirstOrDefault(x => x.SiginID == mod.ID);
+                if (user.Email == email)
+                {
+                    mod.Password = sigin.Password;
+                }
+            }
+            return EF.SaveChanges() > 0;
+        }
     }
 }
