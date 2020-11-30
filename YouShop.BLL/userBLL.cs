@@ -30,7 +30,16 @@ namespace YouShop.BLL
         /// <returns></returns>
         public Sigin GetSign(Sigin sigin)
         {
-            return EF.Sigins.FirstOrDefault(x => x.Account == sigin.Account && x.Password == sigin.Password || x.QQ_OpenID == sigin.QQ_OpenID || x.WX_OpenID == sigin.WX_OpenID);
+            return EF.Sigins.FirstOrDefault(x => x.Account == sigin.Account && x.Password == sigin.Password);
+        }
+        /// <summary>
+        /// 查找用户是否存在
+        /// </summary>
+        /// <param name="Account"></param>
+        /// <returns></returns>
+        public bool FindUser(string Account)
+        {
+            return EF.Sigins.FirstOrDefault(x => x.Account == Account) != null;
         }
         /// <summary>
         /// 注册
@@ -68,13 +77,13 @@ namespace YouShop.BLL
         /// <param name="email"></param>
         /// <param name="sigin"></param>
         /// <returns></returns>
-        public bool RestPWD(string email, Sigin sigin)
+        public bool RestPWD(string Email, Sigin sigin)
         {
             var mod = EF.Sigins.FirstOrDefault(x => x.Account == sigin.Account);
             if (mod != null)
             {
                 var user = EF.Users.FirstOrDefault(x => x.SiginID == mod.ID);
-                if (user.Email == email)
+                if (user.Email == Email)
                 {
                     mod.Password = sigin.Password;
                 }

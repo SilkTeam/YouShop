@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using YouShop.DAL;
 
 namespace YouShop.BLL
 {
@@ -10,13 +11,13 @@ namespace YouShop.BLL
 
     public class MemberBll
     {
-        private DAL.YoungShopEntites _ef;
-        private DAL.YoungShopEntites EF
+        private YoungShopEntites _ef;
+        private YoungShopEntites EF
         {
             get
             {
                 if (_ef == null)
-                    _ef = new DAL.YoungShopEntites();
+                    _ef = new YoungShopEntites();
                 return _ef;
             }
         }

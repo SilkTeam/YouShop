@@ -3,5 +3,96 @@
     ViewBag.Title = "Forget";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
 <h2>Forget</h2>
+<form id="submit">
+    <div class="form-group">
+        <label>账号：</label>
+        <input type="text" class="form-control" id="Account" required placeholder="请输入账号">
+    </div>
+    <div class="form-group">
+        <label>密码：</label>
+        <input type="password" class="form-control" id="Password" required placeholder="请输入新密码">
+    </div>
+    <div class="form-group">
+        <label>确认密码：</label>
+        <input type="password" class="form-control" required placeholder="请确认新密码" id="PWD">
+    </div>
+    <div class="form-group">
+        <label>邮件：</label>
+        <input type="email" required class="form-control" id="Email">
+    </div>
+    @if (Session["Error"] == null)
+    {
+        <div class="form-group">
+            <lable>验证码：</lable>
+            <img src="@Session["AuthCode"]" style="border: solid 1px black;border-radius: 10px;" class="img-fluid" id="getCode" /><br /><br />
+            <input type="text" maxlength="4" class="form-control" id="AuthCode" required placeholder="请输入验证码" />
+        </div>
+        <div class="btn-group">
+            <button id="submit" class="btn btn-primary">重置密码</button>
+            <a class="btn btn-success" href="/Home/Sigin">返回登录</a>
+        </div>
+    }
+    else
+    {
+        <div class="btn-group">
+            <button disabled class="btn btn-secondary">重置密码</button>
+            <a class="btn btn-success" href="/Home/Sigin">返回登录</a>
+        </div>
+    }
+</form>
+@section scripts{
+    @if (Session["Error"] != null)
+    {
+        <script>
+            $(function () {
+                layer.alert("验证码加载失败，请重试！<br>错误信息：<br>@Html.Raw(ViewBag.Error)");
+            });
+        </script>
+    }
+    <script>
+        $("#getCode").click(function () {
+            layer.load(2, { shade: false });
+            $.post("/Home/GetCode", function (res) {
+                setTimeout(function () {
+                    layer.closeAll('loading');
+                }, 350);
+                $("#getCode").attr('src', res);
+            });
+        });
+        $("#submit").submit(function () {
+            if ($("#Password").val() == $("#PWD").val()) {
+                layer.load(2, { shade: false });
+                var data = {
+                    Account: $("#Account").val(),
+                    Password: $("#Password").val(),
+                    Email: $("#Email").val(),
+                    AuthCode: $("#AuthCode").val(),
+                };
+                $.post("/Home/Forget", data, function (res) {
+                    setTimeout(function () {
+                        layer.closeAll('loading');
+                    }, 350);
+                    if (res == "success") {
+                        layer.alert("重置密码成功");
+                        setTimeout(function () {
+                            window.location.href = "/Home/Sigin";
+                        }, 1500);
+                    } else {
+                        layer.alert(res);
+                    };
+                });
+            } else {
+                layer.alert("两次输入的密码不一致");
+            };
+            $.post("/Home/GetCode", function (res) {
+                $("#getCode").attr('src', res);
+            });
+            $("#PWD").val("");
+            $("#Email").val("");
+            $("#Password").val("");
+            $("#AuthCode").val("");
+            return false;
+        });
+    </script>
+}

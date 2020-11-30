@@ -233,6 +233,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Register.cshtml" />
     <Content Include="Views\Home\Forget.cshtml" />
+    <Content Include="Views\Shared\_User.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -241,6 +242,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Filter\" />
     <Folder Include="Views\Business\" />
     <Folder Include="Views\Manager\" />
   </ItemGroup>

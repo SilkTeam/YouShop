@@ -23,23 +23,11 @@ namespace YouShop.WebUI.Controllers
         [HttpGet]
         public ActionResult Sigin()
         {
+            // 重复调用，后面通过过滤器实现
             if (Session["User"] != null)
                 return Redirect("/Home/Index");
 
-            var ranString = new Random(Guid.NewGuid().GetHashCode());
-            string code = ranString.Next(1000, 9999).ToString();
-            var AuthCode = ImgCode.Get(code);
-            Session["code"] = code;
-
-            if (AuthCode.Contains("/Code/"))
-            {
-                Session["Error"] = null;
-                Session["AuthCode"] = AuthCode;
-            }
-            else
-            {
-                Session["Error"] = AuthCode;
-            }
+            CodeRef();
 
             return View();
         }
@@ -48,17 +36,23 @@ namespace YouShop.WebUI.Controllers
         {
             if (Request["AuthCode"] == Session["code"].ToString())
             {
+                //sigin.QQ_OpenID = sigin.WX_OpenID = "0";
                 sigin.Password = Security.MD5Encrypt32(sigin.Password);
                 var mod = UserBLL.GetSign(sigin);
-                if (mod != null)
-                {
-                    Session["User"] = mod;
-                    Session["Identity"] = mod.Identity;
-                    return Content("success");
-                }
-                else
-                {
+                if (mod == null)
                     return Content("账号或密码错误");
+
+                Session["User"] = mod;
+                Session["Identity"] = mod.Identity;
+                // 身份固定，不可切换页面，注册时可选商家或用户，申请一律在Send表
+                switch (mod.Identity)
+                {
+                    case 0:
+                        return Content("success");
+                    case 1:
+                        return Redirect("/Home/Redir");
+                    default:
+                        return Redirect("/Home/Index");
                 }
             }
             else
@@ -76,20 +70,7 @@ namespace YouShop.WebUI.Controllers
             if (Session["User"] != null)
                 return Redirect("/Home/Index");
 
-            var ranString = new Random(Guid.NewGuid().GetHashCode());
-            string code = ranString.Next(1000, 9999).ToString();
-            var AuthCode = ImgCode.Get(code);
-            Session["code"] = code;
-
-            if (AuthCode.Contains("/Code/"))
-            {
-                Session["Error"] = null;
-                Session["AuthCode"] = AuthCode;
-            }
-            else
-            {
-                Session["Error"] = AuthCode;
-            }
+            CodeRef();
 
             return View();
         }
@@ -98,6 +79,10 @@ namespace YouShop.WebUI.Controllers
         {
             if (Request["AuthCode"] == Session["code"].ToString())
             {
+                if (UserBLL.FindUser(sigin.Account))
+                    return Content("用户名已存在");
+
+                user.Name = "ys" + Security.MD5Encrypt16(sigin.Account).Substring(0, 8);
                 sigin.Password = Security.MD5Encrypt32(sigin.Password);
                 if (UserBLL.GetReg(sigin, user))
                 {
@@ -113,6 +98,23 @@ namespace YouShop.WebUI.Controllers
                 return Content("验证码错误");
             }
         }
+        public bool CodeRef()
+        {
+            var ranString = new Random(Guid.NewGuid().GetHashCode());
+            string code = ranString.Next(1000, 9999).ToString();
+            var AuthCode = ImgCode.Get(code);
+            Session["code"] = code;
+            if (AuthCode.Contains("/Code/"))
+            {
+                Session["Error"] = null;
+                Session["AuthCode"] = AuthCode;
+            }
+            else
+            {
+                Session["Error"] = AuthCode;
+            }
+            return true;
+        }
         /// <summary>
         /// 刷新验证码
         /// </summary>
@@ -120,13 +122,8 @@ namespace YouShop.WebUI.Controllers
         [HttpPost]
         public ActionResult GetCode()
         {
-            var ranString = new Random(Guid.NewGuid().GetHashCode());
-            string code = ranString.Next(1000, 9999).ToString();
-            var AuthCode = ImgCode.Get(code);
-            Session["code"] = code;
-
-            Session["AuthCode"] = AuthCode;
-            return Content(AuthCode);
+            CodeRef();
+            return Content(Session["AuthCode"].ToString());
         }
         /// <summary>
         /// Forget Password
@@ -138,30 +135,17 @@ namespace YouShop.WebUI.Controllers
             if (Session["User"] != null)
                 return Redirect("/Home/Index");
 
-            var ranString = new Random(Guid.NewGuid().GetHashCode());
-            string code = ranString.Next(1000, 9999).ToString();
-            var AuthCode = ImgCode.Get(code);
-            Session["code"] = code;
-
-            if (AuthCode.Contains("/Code/"))
-            {
-                Session["Error"] = null;
-                Session["AuthCode"] = AuthCode;
-            }
-            else
-            {
-                Session["Error"] = AuthCode;
-            }
+            CodeRef();
 
             return View();
         }
         [HttpPost]
-        public ActionResult Forget(string email, Sigin sigin)
+        public ActionResult Forget(string Email, Sigin sigin)
         {
             if (Request["AuthCode"] == Session["code"].ToString())
             {
                 sigin.Password = Security.MD5Encrypt32(sigin.Password);
-                if (UserBLL.RestPWD(email, sigin))
+                if (UserBLL.RestPWD(Email, sigin))
                 {
                     return Content("success");
                 }
@@ -174,6 +158,12 @@ namespace YouShop.WebUI.Controllers
             {
                 return Content("验证码错误");
             }
+        }
+        [HttpPost]
+        public ActionResult Logout()
+        {
+            Session["User"] = Session["Identity"] = null;
+            return Content("success");
         }
     }
 }
