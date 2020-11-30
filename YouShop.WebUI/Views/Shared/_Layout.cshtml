@@ -11,7 +11,7 @@
     <link href="~/Content/fontawesome/css/solid.min.css" rel="stylesheet" />
 </head>
 <body>
-    <nav class="navbar navbar-expand-md bg-secondary navbar-dark">
+    <nav class="navbar navbar-expand-md bg-info navbar-dark">
         <a class="navbar-brand" href="#">YoungShop</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
             <span class="navbar-toggler-icon"></span>
@@ -27,15 +27,17 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/Home/Register"><i class="fas fa-user-plus"></i>注册</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item" style="margin-right: 16px;">
                     <a class="nav-link" href="/Home/Sigin"><i class="fas fa-sign-in-alt"></i>登录</a>
+                </li>
+                <li class="nav-item">
+                    <form class="form-inline mt-2 mt-md-0" action="/Home/Search">
+                        <input class="form-control mr-sm-2" type="text" placeholder="请输入内容" aria-label="Search">
+                        <button class="btn btn-outline-warning my-2 my-sm-0" type="submit"><i class="fas fa-search"></i>搜索</button>
+                    </form>
                 </li>
             </ul>
         </div>
-        <form class="form-inline mt-2 mt-md-0" action="/Home/Search">
-            <input class="form-control mr-sm-2" type="text" placeholder="请输入内容" aria-label="Search">
-            <button class="btn btn-outline-warning my-2 my-sm-0" type="submit"><i class="fas fa-search"></i>搜索</button>
-        </form>
     </nav>
     <br>
     <div class="container">
