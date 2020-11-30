@@ -23,7 +23,7 @@ namespace YouShop.WebUI.Controllers
             return View();
         }
       
-
+        [HttpPost]
         public ActionResult GetList(int page = 1, int limit = 5)
         {
             var list = MemberBll.GetUser(out int dataCount, page, limit).Select(x => new
@@ -46,7 +46,7 @@ namespace YouShop.WebUI.Controllers
                 count = dataCount,
                 data = list
             };
-            return Json(res, JsonRequestBehavior.AllowGet);
+            return Json(res);
         }
         [HttpGet]
         public ActionResult Add()
