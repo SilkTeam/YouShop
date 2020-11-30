@@ -1,4 +1,5 @@
-﻿
+﻿@model YouShop.Model.User
+
 @{
     ViewBag.Title = "Eidt";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -15,70 +16,65 @@
 </head>
 <body style="padding:50px 100px 0 0;">
 
+
     <div class="layui-form" action="">
         <div class="layui-form-item">
             <label class="layui-form-label">姓名</label>
             <div class="layui-input-block">
-                <input type="text" name="title" id="Name" required lay-verify="required" placeholder="" autocomplete="off" class="layui-input">
-            </div>
-        </div>
-        <div class="layui-form-item">
-            <label class="layui-form-label"></label>
-            <div class="layui-input-block">
-                <input type="text" name="title" id="SiginID" required lay-verify="required" placeholder="" autocomplete="off" class="layui-input">
-            </div>
-        </div>
-        <div class="layui-form-item">
-            <label class="layui-form-label">时间</label>
-            <div class="layui-input-block">
-                <input type="text" name="title" id="EmtryTime" required lay-verify="required" value="@DateTime.Now.ToShortDateString()" placeholder="" autocomplete="off" class="layui-input">
-            </div>
-        </div>
-        <div class="layui-form-item">
-            <label class="layui-form-label">年龄</label>
-            <div class="layui-input-block">
-                <input type="text" name="title" id="Age" required lay-verify="required" placeholder="" autocomplete="off" class="layui-input">
-            </div>
-        </div>
-        <div class="layui-form-item">
-            <label class="layui-form-label">电话</label>
-            <div class="layui-input-block">
-                <input type="text" name="title" id="Phone" required lay-verify="required" placeholder="" autocomplete="off" class="layui-input">
-            </div>
-        </div>
-        <div class="layui-form-item">
-            <label class="layui-form-label">年龄</label>
-            <div class="layui-input-block">
-                <input type="text" name="title" id="WalletID" required lay-verify="required" placeholder="" autocomplete="off" class="layui-input">
-            </div>
-        </div>
-        <div class="layui-form-item">
-            <label class="layui-form-label">头像</label>
-            <div class="layui-input-block">
-                <input type="text" name="title" id="Img" required lay-verify="required" placeholder="" autocomplete="off" class="layui-input">
-            </div>
-        </div>
-        <div class="layui-form-item">
-            <label class="layui-form-label">邮箱</label>
-            <div class="layui-input-block">
-                <input type="text" name="title" id="Emall" required lay-verify="required" placeholder="" autocomplete="off" class="layui-input">
+                <input type="text" name="title" value="@Model.Name" id="Account" required lay-verify="required" placeholder="" autocomplete="off" class="layui-input">
             </div>
         </div>
 
-        <div class="layui-form-item">
-            <label class="layui-form-label">性别</label>
-            <div class="layui-input-block">
-                <input type="radio" name="sex" id="Sex" value="男" title="男">
-                <input type="radio" name="sex" value="女" title="女" checked>
-            </div>
-        </div>
-        <div class="layui-form-item">
-            <div class="layui-input-block">
-                <button class="layui-btn" lay-submit lay-filter="formDemo" id="btnSave">立即提交</button>
-                <button type="reset" class="layui-btn layui-btn-primary" id="btnClose">关闭</button>
-            </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">年龄</label>
+        <div class="layui-input-block">
+            <input type="text" name="title" id="Age" value="@Model.Age" required lay-verify="required" placeholder="" autocomplete="off" class="layui-input">
         </div>
     </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">电话</label>
+        <div class="layui-input-block">
+            <input type="text" name="title" id="Phone" value=" @Model.Phone" required lay-verify="required" placeholder="" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">邮箱</label>
+        <div class="layui-input-block">
+            <input type="text" name="title" id="Emall"@Model.Email required lay-verify="required" placeholder="" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">性别</label>
+        <select name="Sex">
+            <option value="0">  女 </option>
+            <option value="1">   男</option>
+            <option value="2">   变性</option>
+
+
+
+        </select>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">类型</label>
+        <select name="Identity">
+            <option value="0"> 普通用户</option>
+            <option value="1">  商户</option>
+
+
+        </select>
+    </div>
+
+    <div class="layui-form-item">
+        <div class="layui-input-block">
+            <button class="layui-btn" lay-submit lay-filter="formDemo" id="btnSave">立即提交</button>
+            <button type="reset" class="layui-btn layui-btn-primary" id="btnClose">关闭</button>
+        </div>
+    </div>
+   
     @*<script src="~/Scripts/jquery-3.5.1.min.js"></script>
 
         <script src="~/Content/layui/layui.all.js"></script>*@

@@ -1,10 +1,10 @@
-﻿
+﻿@model List<YouShop.Model.Shop>
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "ShopIndex";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-
+<h2>ShopIndex</h2>
 
 <html>
 
@@ -12,9 +12,10 @@
     <meta name="viewport" content="width=device-width" />
     <title>Index</title>
     <link href="~/Content/layui/css/layui.css" rel="stylesheet" />
-  
+
 </head>
 <body>
+    
 
     <button type="button" class="layui-btn layui-btn-normal" id="btnAdd">新增</button>
     <hr />
@@ -24,7 +25,7 @@
 
     @*<script src="~/Scripts/jquery-3.5.1.min.js"></script>
 
-    <script src="~/Content/layui/layui.all.js"></script>*@
+        <script src="~/Content/layui/layui.all.js"></script>*@
     @section scripts{
         <script>
             var tabIns = null;
@@ -40,30 +41,33 @@
                         , layEvent: 'LAYTABLE_TIPS'
                         , icon: 'layui-icon-tips'
                     }]
-                    , url: '/Manager/GetList' //数据接口
+                    , url: '/Manager/getshop' //数据接口
                     , page: true //开启分页
                     , cols: [[ //表头
-                        
-                        , { field: 'Name', title: '用户名', width: 150 }
-                      
-                        , { field: 'Phone', title: '电话', width: 80 }
+
+                        , { field: 'Name', title: '商品名称', width: 150 }
+
+                        , { field: 'Description', title: '未知', width: 80 }
                         //, { field: 'Img', title: '年龄', width: 80 }
-                     
-                        , { field: 'EntryTime', title: '邮箱', width: 80 }
-                        , { field: 'Age', title: '年龄', width: 80 },
-                       
-                        {field: 'Sex', title: '性别', width: 177, templet: function (d) {
-                                if (d.Sex == 1)
-                                    return '男';
+
+                        , { field: 'EntryTime', title: '上架时间', width: 80 }
+                        , { field: 'Price', title: '价格', width: 80 },
+                        , { field: 'SortID', title: '分类', width: 80 },
+                        , { field: 'Off', title: '未知', width: 80 },
+                        {
+                            field: 'Status', title: '状态', width: 177, templet: function (d) {
+                                if (d.Status == false)
+                                    return '下架';
                                 else
-                                    return '女';
+                                    return '可售';
                             },
 
-                      
+
+                         
                             title: '操作', templet: function (d) {
                                 return '<button type="button" class="layui-btn layui-btn-xs" onclick="/Eidt(' + d.ID + ')">编辑</button>';
                             }
-                            , 
+                            ,
                             title: '操作', templet: function (d) {
                                 return '<button type="button" class="layui-btn layui-btn-xs" onclick="edit(' + d.ID + ')">删除</button>';
                             }
@@ -80,7 +84,7 @@
                     shadeClose: true,
                     shade: 0.8,
                     area: ['700px', '60%'],
-                    content: '/Manager/Add' //iframe的url
+                    content: '/Manager/ShpoAdd' //iframe的url
                 });
             })
 
@@ -100,13 +104,9 @@
                 });
             }
         </script>
-        }
-    </body>
+    }
+</body>
 </html>
-
-
-
-   
 
 
 

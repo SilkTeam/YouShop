@@ -22,24 +22,9 @@ namespace YouShop.WebUI.Controllers
         {
             return View();
         }
-        public ActionResult GetIndex(int page = 1, int limit = 5)
-        {
-            int dataCont = 0;
-            var list = MemberBll.GetUser(out dataCont, page, limit);
-            var res = new
-            {
-                code = 0,
-                msg = "",
-                count = dataCont,
-                data = list,
+      
 
-            };
-            return Json(res, JsonRequestBehavior.AllowGet);
-
-
-        }
-
-        public ActionResult GetList(int page = 1, int limit = 15)
+        public ActionResult GetList(int page = 1, int limit = 5)
         {
             int dataCount = 0;
             var list = MemberBll.GetUser(out dataCount, page, limit).Select(x => new
@@ -101,6 +86,32 @@ namespace YouShop.WebUI.Controllers
         { var LIST = MemberBll.GetMember(ID);
 
             return View(LIST);
+
+
+        }
+
+
+
+        // GET: Home
+        public ActionResult ShopIndex()//商品视图
+
+        {
+
+            return View();
+        }
+        public ActionResult getshop(int page = 1, int limit = 5)
+        {
+            int dataCont = 0;
+            var list = MemberBll.Shops(out dataCont, page, limit);
+            var res = new
+            {
+                code = 0,
+                msg = "",
+                count = dataCont,
+                data = list,
+
+            };
+            return Json(res, JsonRequestBehavior.AllowGet);
 
 
         }
