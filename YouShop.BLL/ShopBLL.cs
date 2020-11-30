@@ -31,5 +31,23 @@ namespace YouShop.BLL
         {
             return EF.Shops.ToList();
         }
+
+        public List<Shop> GetSearch(Model.Shop shop)
+        {
+            var list = EF.Shops.Where(x => true);
+            if (!string.IsNullOrEmpty(shop.Name))
+               list= list.Where(x => x.Name.Contains(shop.Name));
+
+            var aa = list.ToList().Select(x => new
+            {
+                x.ID,
+                x.Name,
+                x.Description,
+                x.Img,
+                x.Price,
+            });
+           return list.ToList();
+        }
     }
 }
+
