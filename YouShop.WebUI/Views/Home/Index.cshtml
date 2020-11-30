@@ -10,7 +10,50 @@
     ViewBag.Title = "Index";
     var list = ViewBag.list as List<YouShop.Model.Shop>;
 }
-<div class="row">
+<div id="demo" class="carousel slide" data-ride="carousel">
+
+    <!-- 指示符 -->
+    <ul class="carousel-indicators">
+        <li data-target="#demo" data-slide-to="0" class="active"></li>
+        <li data-target="#demo" data-slide-to="1"></li>
+        <li data-target="#demo" data-slide-to="2"></li>
+    </ul>
+
+    <!-- 轮播图片 -->
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="https://static.runoob.com/images/mix/img_fjords_wide.jpg" style="width:100%;">
+            <div class="carousel-caption">
+                <h3>第一张图片描述标题</h3>
+                <p>描述文字!</p>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="https://static.runoob.com/images/mix/img_nature_wide.jpg" style="width:100%;">
+            <div class="carousel-caption">
+                <h3>第一张图片描述标题</h3>
+                <p>描述文字!</p>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="https://static.runoob.com/images/mix/img_mountains_wide.jpg" style="width:100%;">
+            <div class="carousel-caption">
+                <h3>第一张图片描述标题</h3>
+                <p>描述文字!</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 左右切换按钮 -->
+    <a class="carousel-control-prev" href="#demo" data-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+    </a>
+    <a class="carousel-control-next" href="#demo" data-slide="next">
+        <span class="carousel-control-next-icon"></span>
+    </a>
+
+</div>
+@*<div class="row">
     @foreach (var item in list)
     {
         <div class="col-md-4">
@@ -33,7 +76,7 @@
                         {
 
                             <div class="btn-group">
-                                <a type="button" href="/MyCar/Add?ID=@(item.ID)" class="btn btn-sm btn-outline-secondary">添加到购物车</a>
+                                <a type="button" href="/Shop/AddCar?ID=@(item.ID)" class="btn btn-sm btn-outline-secondary">添加到购物车</a>
                             </div>
                         }
                         <small class="text-muted">@item.EntryTime 上架</small>
@@ -42,4 +85,4 @@
             </div>
         </div>
     }
-</div>
+</div>*@
