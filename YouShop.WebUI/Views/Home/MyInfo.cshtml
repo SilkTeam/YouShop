@@ -1,0 +1,97 @@
+﻿@model YouShop.Model.User
+@{
+    ViewBag.Title = "MyInfo";
+    Layout = "~/Views/Shared/_User.cshtml";
+}
+<form id="submit">
+    <div class="form-group">
+        <label>用户名：</label>
+        <input type="text" class="form-control" disabled required id="Account" value="@Model.Sigin.Account">
+    </div>
+    <div class="form-group">
+        <label>姓名：</label>
+        <input type="text" class="form-control" required id="Name" value="@Model.Name">
+    </div>
+    <div class="form-group">
+        <label>性别：</label>
+        <select class="form-control" id="Sex">
+            <option value="0">女</option>
+            <option value="1">男</option>
+            <option value="2">保密</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label>邮件：</label>
+        <input type="email" required class="form-control" id="Email" value="@Model.Email">
+    </div>
+    <div class="form-group">
+        <label>联系方式：</label>
+        <input type="tel" class="form-control" id="Phone" required value="@Model.Phone">
+    </div>
+    @if (Session["Error"] == null)
+    {
+        <div class="form-group">
+            <lable>验证码：</lable>
+            <img src="@Session["AuthCode"]" style="border: solid 1px black;border-radius: 10px;" class="img-fluid" id="getCode" /><br /><br />
+            <input type="text" maxlength="4" class="form-control" id="AuthCode" required placeholder="请输入验证码" />
+        </div>
+        <div class="btn-group">
+            <button class="btn btn-primary">修改信息</button>
+            <a class="btn btn-secondary" href="/Home/EditPWD">修改密码</a>
+        </div>
+    }
+    else
+    {
+        <div class="btn-group">
+            <button disabled class="btn btn-secondary">修改信息</button>
+            <a class="btn btn-secondary" href="/Home/EditPWD">修改密码</a>
+        </div>
+    }
+</form>
+@section scripts{
+    <script>
+        $("#getCode").click(function () {
+            layer.load(2, { shade: false });
+            $.post("/Home/GetCode", function (res) {
+                setTimeout(function () {
+                    layer.closeAll('loading');
+                }, 350);
+                $("#getCode").attr('src', res);
+            });
+        });
+        $("#submit").submit(function () {
+            if ($("#Password").val() == $("#PWD").val()) {
+                layer.load(2, { shade: false });
+                var data = {
+                    Account: $("#Account").val(),
+                    Password: $("#Password").val(),
+                    Email: $("#Email").val(),
+                    Phone: $("#Phone").val(),
+                    AuthCode: $("#AuthCode").val(),
+                };
+                $.post("/Home/Register", data, function (res) {
+                    setTimeout(function () {
+                        layer.closeAll('loading');
+                    }, 1000);
+                    if (res == "success") {
+                        layer.alert("注册成功！");
+                        setTimeout(function () {
+                            window.location.href = "/Home/Sigin";
+                        }, 1500);
+                    } else {
+                        layer.alert(res);
+                    };
+                });
+            } else {
+                layer.alert("两次输入的密码不一致");
+            };
+            $.post("/Home/GetCode", function (res) {
+                $("#getCode").attr('src', res);
+            });
+            $("#PWD").val("");
+            $("#Password").val("");
+            $("#AuthCode").val("");
+            return false;
+        });
+    </script>
+}

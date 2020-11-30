@@ -218,6 +218,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManagerController.cs" />
     <Compile Include="Controllers\ShopController.cs" />
+    <Compile Include="Filter\AuthAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -243,6 +244,7 @@
     <Content Include="Views\Manager\Index.cshtml" />
     <Content Include="Views\Home\List.cshtml" />
     <Content Include="Views\Manager\ShopIndex.cshtml" />
+    <Content Include="Views\Home\MyInfo.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -251,7 +253,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Filter\" />
     <Folder Include="Views\Business\" />
     <Folder Include="Views\Shop\" />
   </ItemGroup>

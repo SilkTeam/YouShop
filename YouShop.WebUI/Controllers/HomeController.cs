@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using YouShop.BLL;
 using YouShop.Model;
+using YouShop.WebUI.Filter;
 using YouShop.WebUI.Handles;
 
 namespace YouShop.WebUI.Controllers
@@ -28,10 +29,6 @@ namespace YouShop.WebUI.Controllers
         [HttpGet]
         public ActionResult Sigin()
         {
-            // 重复调用，后面通过过滤器实现
-            if (Session["User"] != null)
-                return Redirect("/Home/Index");
-
             CodeRef();
 
             return View();
@@ -48,6 +45,7 @@ namespace YouShop.WebUI.Controllers
                     return Content("账号或密码错误");
 
                 Session["User"] = mod;
+                Session["ID"] = mod.ID;
                 Session["Identity"] = mod.Identity;
                 // 身份固定，不可切换页面，注册时可选商家或用户，申请一律在Send表
                 switch (mod.Identity)
@@ -164,11 +162,20 @@ namespace YouShop.WebUI.Controllers
                 return Content("验证码错误");
             }
         }
+        /// <summary>
+        /// Logout user
+        /// </summary>
+        /// <returns></returns>
         [HttpPost]
         public ActionResult Logout()
         {
-            Session["User"] = Session["Identity"] = null;
+            Session["User"] = Session["Identity"] = Session["ID"] = null;
             return Content("success");
+        }
+        [HttpGet]
+        public ActionResult MyInfo()
+        {
+            return View(userBLL.GetInfo(Convert.ToInt32(Session["ID"])));
         }
     }
 }

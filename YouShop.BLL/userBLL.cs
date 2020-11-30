@@ -91,5 +91,10 @@ namespace YouShop.BLL
             }
             return EF.SaveChanges() > 0;
         }
+        public User GetInfo(int ID)
+        {
+            var mod = EF.Users.Include("Sigin").FirstOrDefault(x => x.SiginID == ID);
+            return mod;
+        }
     }
 }
