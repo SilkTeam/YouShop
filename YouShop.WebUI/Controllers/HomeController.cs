@@ -11,10 +11,11 @@ namespace YouShop.WebUI.Controllers
 {
     public class HomeController : Controller
     {
-        readonly UserBLL UserBLL = new UserBLL();
+        readonly UserBLL userBLL = new UserBLL();
+        readonly ShopBLL shopBLL = new ShopBLL();
         public ActionResult Index()
         {
-            return View();
+            return View(shopBLL.GetShop());
         }
         /// <summary>
         /// 登录
@@ -38,7 +39,7 @@ namespace YouShop.WebUI.Controllers
             {
                 //sigin.QQ_OpenID = sigin.WX_OpenID = "0";
                 sigin.Password = Security.MD5Encrypt32(sigin.Password);
-                var mod = UserBLL.GetSign(sigin);
+                var mod = userBLL.GetSign(sigin);
                 if (mod == null)
                     return Content("账号或密码错误");
 
@@ -79,12 +80,12 @@ namespace YouShop.WebUI.Controllers
         {
             if (Request["AuthCode"] == Session["code"].ToString())
             {
-                if (UserBLL.FindUser(sigin.Account))
+                if (userBLL.FindUser(sigin.Account))
                     return Content("用户名已存在");
 
                 user.Name = "ys" + Security.MD5Encrypt16(sigin.Account).Substring(0, 8);
                 sigin.Password = Security.MD5Encrypt32(sigin.Password);
-                if (UserBLL.GetReg(sigin, user))
+                if (userBLL.GetReg(sigin, user))
                 {
                     return Content("success");
                 }
@@ -145,7 +146,7 @@ namespace YouShop.WebUI.Controllers
             if (Request["AuthCode"] == Session["code"].ToString())
             {
                 sigin.Password = Security.MD5Encrypt32(sigin.Password);
-                if (UserBLL.RestPWD(Email, sigin))
+                if (userBLL.RestPWD(Email, sigin))
                 {
                     return Content("success");
                 }
