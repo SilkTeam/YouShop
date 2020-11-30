@@ -53,6 +53,7 @@
   <ItemGroup>
     <Compile Include="MemberBll.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ShopBLL.cs" />
     <Compile Include="UserBLL.cs" />
   </ItemGroup>
   <ItemGroup>

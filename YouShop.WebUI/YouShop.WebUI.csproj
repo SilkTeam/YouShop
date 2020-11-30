@@ -236,8 +236,8 @@
     <Content Include="Views\Home\Forget.cshtml" />
     <Content Include="Views\Shared\_User.cshtml" />
     <Content Include="Views\Manager\Eidt.cshtml" />
-    <Content Include="Views\Manager\Index.cshtml" />
-    <None Include="Web.Debug.config">
+    <Content Include="Views\Manager\Add.cshtml" />
+    <Content Include="Views\Manager\Index.cshtml" />    <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
     <None Include="Web.Release.config">
