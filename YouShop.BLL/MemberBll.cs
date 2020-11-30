@@ -60,8 +60,5 @@ namespace YouShop.BLL
             return num > 0;
 
         }
-
-
-
     }
 }

@@ -1,108 +1,124 @@
 ﻿
 @{
     ViewBag.Title = "Add";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<h2>Add</h2>
 
 <!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/Content/layui/css/layui.css" rel="stylesheet" />
 
+</head>
+<body>
 
-<body style="padding:50px 100px 0 0;">
     <div class="layui-form" action="">
         <div class="layui-form-item">
             <label class="layui-form-label">姓名</label>
             <div class="layui-input-block">
-                <input type="text" name="title" id="Name" required lay-verify="required" placeholder="" autocomplete="off" class="layui-input">
-            </div>
-        </div>
-        <div class="layui-form-item">
-            <label class="layui-form-label"></label>
-            <div class="layui-input-block">
-                <input type="text" name="title" id="SiginID" required lay-verify="required" placeholder="" autocomplete="off" class="layui-input">
-            </div>
-        </div>
-        <div class="layui-form-item">
-            <label class="layui-form-label">时间</label>
-            <div class="layui-input-block">
-                <input type="text" name="title" id="EmtryTime" required lay-verify="required" value="@DateTime.Now.ToShortDateString()" placeholder="" autocomplete="off" class="layui-input">
-            </div>
-        </div>
-        <div class="layui-form-item">
-            <label class="layui-form-label">年龄</label>
-            <div class="layui-input-block">
-                <input type="text" name="title" id="Age" required lay-verify="required" placeholder="" autocomplete="off" class="layui-input">
-            </div>
-        </div>
-        <div class="layui-form-item">
-            <label class="layui-form-label">电话</label>
-            <div class="layui-input-block">
-                <input type="text" name="title" id="Phone" required lay-verify="required" placeholder="" autocomplete="off" class="layui-input">
-            </div>
-        </div>
-        <div class="layui-form-item">
-            <label class="layui-form-label">年龄</label>
-            <div class="layui-input-block">
-                <input type="text" name="title" id="WalletID" required lay-verify="required" placeholder="" autocomplete="off" class="layui-input">
-            </div>
-        </div>
-        <div class="layui-form-item">
-            <label class="layui-form-label">头像</label>
-            <div class="layui-input-block">
-                <input type="text" name="title" id="Img" required lay-verify="required" placeholder="" autocomplete="off" class="layui-input">
-            </div>
-        </div>
-        <div class="layui-form-item">
-            <label class="layui-form-label">邮箱</label>
-            <div class="layui-input-block">
-                <input type="text" name="title" id="Emall" required lay-verify="required" placeholder="" autocomplete="off" class="layui-input">
+                <input type="text" name="title" id="Account" required lay-verify="required" placeholder="" autocomplete="off" class="layui-input">
             </div>
         </div>
 
-        <div class="layui-form-item">
-            <label class="layui-form-label">性别</label>
-            <div class="layui-input-block">
-                <input type="radio" name="sex" id="Sex" value="男" title="男">
-                <input type="radio" name="sex" value="女" title="女" checked>
-            </div>
-        </div>
-        <div class="layui-form-item">
-            <div class="layui-input-block">
-                <button class="layui-btn" lay-submit lay-filter="formDemo" id="btnSave">立即提交</button>
-                <button type="reset" class="layui-btn layui-btn-primary" id="btnClose">关闭</button>
-            </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">年龄</label>
+        <div class="layui-input-block">
+            <input type="text" name="title" id="Age" required lay-verify="required" placeholder="" autocomplete="off" class="layui-input">
         </div>
     </div>
-    <script src="~/Scripts/jquery-3.5.1.min.js"></script>
-  
-    <script src="~/Content/layui/layui.all.js"></script>
-    <script>
-        $("#btnSave").click(function () {
-            var paras = {
-                Name: $('#Name').val(),
-                Img: $('#Img').val(),
-                Emall: $('#Emall').val(),
-                Age: $('#Age').val(),
-                Sex: $('#Sex').prop('checked'),
-                EmtryTime: $('#EmtryTime').val(),
-                Phone: $('#Phone').val(),
-                WalletID: "  $('Phone').val()",
-                SiginID: $('#SiginID').val(),
-            };
+    <div class="layui-form-item">
+        <label class="layui-form-label">电话</label>
+        <div class="layui-input-block">
+            <input type="text" name="title" id="Phone" required lay-verify="required" placeholder="" autocomplete="off" class="layui-input">
+        </div>
+    </div>
 
-            if (paras.Sex == false)
-                paras.Sex = 0;
-            else
-                paras.Sex = 1;
 
-            $.post('/Member/add', paras, function (res) {
+    <div class="layui-form-item">
+        <label class="layui-form-label">邮箱</label>
+        <div class="layui-input-block">
+            <input type="text" name="title" id="Emall" required lay-verify="required" placeholder="" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">性别</label>
+        <select name="Sex">
+            <option value="0">  女 </option>
+            <option value="1">   男</option>
+            <option value="2">   变性</option>
+
+
+
+        </select>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">类型</label>
+        <select name="Identity">
+            <option value="0"> 普通用户</option>
+            <option value="1">  商户</option>
+
+
+        </select>
+    </div>
+
+    <div class="layui-form-item">
+        <div class="layui-input-block">
+            <button class="layui-btn" lay-submit lay-filter="formDemo" id="btnSave">立即提交</button>
+            <button type="reset" class="layui-btn layui-btn-primary" id="btnClose">关闭</button>
+        </div>
+    </div>
+
+    @*<script src="~/Scripts/jquery-3.5.1.min.js"></script>
+
+        <script src="~/Content/layui/layui.all.js"></script>*@
+
+    @section scripts{
+
+
+        <script>
+            $("#btnSave").click(function () {
+                var paras = {
+                    Account: $('#Account').val(),
+                    //Img: $('#Img').val(),
+                    Email: $('#Email').val(),
+                    Age: $('#Age').val(),
+                    Sex: $('#Sex').val(),
+
+                    Phone: $('#Phone').val(),
+                    Identity: $('#Identity').val(  ),
+
+                }
+
+
+                $.post('/Manager/Add', paras, function (res) {
+
+                    if (res == "success") {
+
+                        layer.alert("注册成功！");
+                        setTimeout(function () {
+                            window.location.href = "/Manager/Index";
+                        }, 1500);
+
+                    }
+
+
+                })
+                //window.parent.winClose();
+
+            });
+
+            $('#btnClose').click(function () {
                 window.parent.winClose();
             })
-        })
 
-        $('#btnClose').click(function () {
-            window.parent.winClose();
-        })
-    </script>
+        </script>
+    }
 </body>
 
-x
+
+</html>

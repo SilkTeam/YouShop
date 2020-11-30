@@ -53,6 +53,7 @@ namespace YouShop.BLL
             {
                 Account = sigin.Account,
                 Password = sigin.Password,
+                Identity = sigin.Identity,
                 Users = new List<User>()
                 {
                     new User()
