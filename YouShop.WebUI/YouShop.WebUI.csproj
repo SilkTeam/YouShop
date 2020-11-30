@@ -217,6 +217,7 @@
     <Compile Include="Controllers\BusinessController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManagerController.cs" />
+    <Compile Include="Controllers\ShopController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -252,6 +253,7 @@
   <ItemGroup>
     <Folder Include="Filter\" />
     <Folder Include="Views\Business\" />
+    <Folder Include="Views\Shop\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\YouShop.BLL\YouShop.BLL.csproj">

@@ -33,15 +33,17 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/Home/MyInfo"><i class="fas fa-user"></i>个人信息</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item" style="margin-right: 16px;">
                     <a class="nav-link" href="#Logout" id="Logout"><i class="fas fa-running"></i>退出</a>
+                </li>
+                <li class="nav-item">
+                    <form class="form-inline mt-2 mt-md-0" action="/Home/Search">
+                        <input class="form-control mr-sm-2" type="text" placeholder="请输入内容" aria-label="Search">
+                        <button class="btn btn-outline-warning my-2 my-sm-0" type="submit"><i class="fas fa-search"></i>搜索</button>
+                    </form>
                 </li>
             </ul>
         </div>
-        <form class="form-inline mt-2 mt-md-0" action="/Home/Search">
-            <input class="form-control mr-sm-2" type="text" placeholder="请输入内容" aria-label="Search">
-            <button class="btn btn-outline-warning my-2 my-sm-0" type="submit"><i class="fas fa-search"></i>搜索</button>
-        </form>
     </nav>
     <br>
     <div class="container">
