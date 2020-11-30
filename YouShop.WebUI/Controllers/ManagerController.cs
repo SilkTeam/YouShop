@@ -26,10 +26,8 @@ namespace YouShop.WebUI.Controllers
 
         public ActionResult GetList(int page = 1, int limit = 5)
         {
-            int dataCount = 0;
-            var list = MemberBll.GetUser(out dataCount, page, limit).Select(x => new
+            var list = MemberBll.GetUser(out int dataCount, page, limit).Select(x => new
             {
-
                 x.Email,
                 x.SiginID,
                 x.WalletID,
@@ -40,8 +38,6 @@ namespace YouShop.WebUI.Controllers
                 x.EntryTime,
                 x.Age,
                 Sex = x.Sex == 1 ? "男" : "女",
-
-
             });
             var res = new
             {
@@ -50,15 +46,12 @@ namespace YouShop.WebUI.Controllers
                 count = dataCount,
                 data = list
             };
-
             return Json(res, JsonRequestBehavior.AllowGet);
         }
         [HttpGet]
         public ActionResult Add()
-
         {
             return View();
-
         }
 
         [HttpPost]
@@ -78,43 +71,6 @@ namespace YouShop.WebUI.Controllers
             {
                 return Content("添加错误");
             }
-
         }
-
-        [HttpPost]
-        public ActionResult Eidt( int ID)
-        { var LIST = MemberBll.GetMember(ID);
-
-            return View(LIST);
-
-
-        }
-
-
-
-        // GET: Home
-        public ActionResult ShopIndex()//商品视图
-
-        {
-
-            return View();
-        }
-        public ActionResult getshop(int page = 1, int limit = 5)
-        {
-            int dataCont = 0;
-            var list = MemberBll.Shops(out dataCont, page, limit);
-            var res = new
-            {
-                code = 0,
-                msg = "",
-                count = dataCont,
-                data = list,
-
-            };
-            return Json(res, JsonRequestBehavior.AllowGet);
-
-
-        }
-
     }
 }
