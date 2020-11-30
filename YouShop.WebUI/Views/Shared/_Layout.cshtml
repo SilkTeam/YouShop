@@ -4,8 +4,11 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - YoungShop</title>
-    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
     <link href="~/Content/layui/css/layui.css" rel="stylesheet" />
+    <link href="~/Content/fontawesome/css/brands.min.css" rel="stylesheet" />
+    <link href="~/Content/fontawesome/css/fontawesome.min.css" rel="stylesheet" />
+    <link href="~/Content/fontawesome/css/solid.min.css" rel="stylesheet" />
 </head>
 <body>
     <nav class="navbar navbar-expand-md bg-secondary navbar-dark">
@@ -16,22 +19,23 @@
         <div class="collapse navbar-collapse" id="collapsibleNavbar">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="/Home/Index">首页</a>
+                    <a class="nav-link" href="/Home/Index"><i class="fas fa-home"></i>首页</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/Home/List">商品</a>
+                    <a class="nav-link" href="/Home/List"><i class="fab fa-shopify"></i>商品</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/Home/Search">搜索</a>
+                    <a class="nav-link" href="/Home/Register"><i class="fas fa-user-plus"></i>注册</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/Home/Register">注册</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/Home/Sigin">登录</a>
+                    <a class="nav-link" href="/Home/Sigin"><i class="fas fa-sign-in-alt"></i>登录</a>
                 </li>
             </ul>
         </div>
+        <form class="form-inline mt-2 mt-md-0" action="/Home/Search">
+            <input class="form-control mr-sm-2" type="text" placeholder="请输入内容" aria-label="Search">
+            <button class="btn btn-outline-warning my-2 my-sm-0" type="submit"><i class="fas fa-search"></i>搜索</button>
+        </form>
     </nav>
     <br>
     <div class="container">

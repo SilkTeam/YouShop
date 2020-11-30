@@ -17,6 +17,10 @@ namespace YouShop.WebUI.Controllers
         {
             return View(shopBLL.GetShop());
         }
+        public ActionResult List()
+        {
+            return View(shopBLL.GetShop());
+        }
         /// <summary>
         /// 登录
         /// </summary>
