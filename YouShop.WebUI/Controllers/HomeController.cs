@@ -194,6 +194,32 @@ namespace YouShop.WebUI.Controllers
         {
             var list = shopBLL.GetSearch(shop);
             return View(list);
-       }
+        }
+        public ActionResult Wallet()
+        {
+            var mod = userBLL.Wallet(Convert.ToInt32(Session["ID"]));
+            if (mod.WalletID != null)
+            {
+                Session["Wallet"] = mod.Wallet;
+                return View(mod.Wallet);
+            }
+            else
+            {
+                Session["Wallet"] = null;
+                return Content("null");
+            }
+        }
+        [HttpPost]
+        public ActionResult GoWallet()
+        {
+            if (userBLL.GoWallet(Convert.ToInt32(Session["ID"])))
+            {
+                return Content("success");
+            }
+            else
+            {
+                return Content("已开通过qianbao");
+            }
+        }
     }
 }

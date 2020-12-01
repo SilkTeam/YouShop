@@ -108,8 +108,23 @@ namespace YouShop.BLL
         }
         public User GetInfo(int ID)
         {
-            var mod = EF.Users.Include("Sigin").FirstOrDefault(x => x.SiginID == ID);
-            return mod;
+            return EF.Users.Include("Sigin").FirstOrDefault(x => x.SiginID == ID);
+        }
+        //find wallet
+        public User Wallet(int ID)
+        {
+            return EF.Users.FirstOrDefault(x => x.SiginID == ID);
+        }
+        public bool GoWallet(int ID)
+        {
+            Wallet wallet = new Wallet()
+            {
+                Money = 0,
+            };
+            EF.Wallets.Add(wallet);
+            var mod = EF.Users.FirstOrDefault(x => x.SiginID == ID);
+            mod.WalletID = wallet.ID;
+            return EF.SaveChanges() > 0;
         }
     }
 }

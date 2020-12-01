@@ -1,0 +1,36 @@
+﻿
+@model YouShop.Model.Wallet
+@{
+    ViewBag.Title = "Wallet";
+    Layout = "~/Views/Shared/_User.cshtml";
+}
+<h2>Wallet</h2>
+@if (Session["Wallet"] != null)
+{
+
+}
+else
+{
+    <h2>当前用户钱包未开通，请开通后再使用</h2>
+    <button id="GoWallet" class="btn btn-secondary">快速开通</button>
+}
+@section scripts{
+    <script>
+        $("#GoWallet").click(function () {
+            layer.load(2, { shade: false });
+            $.post("/Home/GoWallet", function (res) {
+                setTimeout(function () {
+                    layer.closeAll('loading');
+                }, 350);
+                if (res == "success") {
+                    layer.alert("修改成功");
+                    setTimeout(function () {
+                        window.location.href = "/Home/Wallet";
+                    }, 1500);
+                } else {
+                    layer.alert(res);
+                };
+            });
+        });
+    </script>
+}

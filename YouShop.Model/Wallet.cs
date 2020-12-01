@@ -11,7 +11,7 @@ namespace YouShop.Model
     {
         [Key]
         public int ID { set; get; }
-        public string Money { set; get; }
+        public double Money { set; get; }
         public List<User> Users { set; get; }
     }
 }

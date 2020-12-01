@@ -246,6 +246,7 @@
     <Content Include="Views\Manager\ShopIndex.cshtml" />
     <Content Include="Views\Home\MyInfo.cshtml" />
     <Content Include="Views\Home\Search.cshtml" />
+    <Content Include="Views\Home\Wallet.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
