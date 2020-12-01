@@ -206,7 +206,7 @@ namespace YouShop.WebUI.Controllers
             else
             {
                 Session["Wallet"] = null;
-                return Content("null");
+                return View();
             }
         }
         [HttpPost]

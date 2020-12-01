@@ -7,12 +7,16 @@
 <h2>Wallet</h2>
 @if (Session["Wallet"] != null)
 {
-
+    <div class="form-group">
+        <label>余额：</label>
+        <input type="text" disabled class="form-control" required id="Money" value="@Model.Money">
+    </div>
+    <button id="ccc" class="btn btn-primary">充值</button>
 }
 else
 {
     <h2>当前用户钱包未开通，请开通后再使用</h2>
-    <button id="GoWallet" class="btn btn-secondary">快速开通</button>
+    <button id="GoWallet" class="btn btn-primary">快速开通</button>
 }
 @section scripts{
     <script>
