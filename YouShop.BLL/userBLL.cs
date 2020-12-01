@@ -122,6 +122,7 @@ namespace YouShop.BLL
                 Money = 1.68,
             };
             EF.Wallets.Add(wallet);
+            EF.SaveChanges();
             var mod = EF.Users.FirstOrDefault(x => x.SiginID == ID);
             mod.WalletID = 1;
             return EF.SaveChanges() > 0;
