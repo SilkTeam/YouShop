@@ -73,6 +73,21 @@ namespace YouShop.BLL
             return EF.SaveChanges() > 0;
         }
         /// <summary>
+        /// 编辑信息
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns></returns>
+        public bool EditInfo(User user)
+        {
+            User mod = EF.Users.FirstOrDefault(x => x.ID == user.ID);
+            mod.Name = user.Name;
+            mod.Sex = user.Sex;
+            mod.Age = user.Age;
+            mod.Email = user.Email;
+            mod.Phone = user.Phone;
+            return EF.SaveChanges() > 0;
+        }
+        /// <summary>
         /// 找回密码
         /// </summary>
         /// <param name="email"></param>

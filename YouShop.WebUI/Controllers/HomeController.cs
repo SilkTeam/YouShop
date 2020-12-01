@@ -178,6 +178,18 @@ namespace YouShop.WebUI.Controllers
             return View(userBLL.GetInfo(Convert.ToInt32(Session["ID"])));
         }
         [HttpPost]
+        public ActionResult MyInfo(User user)
+        {
+            if (userBLL.EditInfo(user))
+            {
+                return Content("success");
+            }
+            else
+            {
+                return Content("修改失败");
+            }
+        }
+        [HttpPost]
         public ActionResult Search(Shop shop)
         {
             var list = shopBLL.GetSearch(shop);
