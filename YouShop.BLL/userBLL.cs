@@ -126,5 +126,11 @@ namespace YouShop.BLL
             mod.WalletID = wallet.ID;
             return EF.SaveChanges() > 0;
         }
+        public bool ccc(Wallet wallet)
+        {
+            var mod = EF.Wallets.FirstOrDefault(x => x.ID == wallet.ID);
+            mod.Money = wallet.Money;
+            return EF.SaveChanges() > 0;
+        }
     }
 }

@@ -221,5 +221,16 @@ namespace YouShop.WebUI.Controllers
                 return Content("已开通过qianbao");
             }
         }
+        public ActionResult ccc(Wallet wallet)
+        {
+            if (userBLL.ccc(wallet))
+            {
+                return Content("success");
+            }
+            else
+            {
+                return Content("充值失败");
+            }
+        }
     }
 }

@@ -7,9 +7,14 @@
 <h2>Wallet</h2>
 @if (Session["Wallet"] != null)
 {
+    <input type="hidden" value="@Model.ID" />
     <div class="form-group">
-        <label>余额：</label>
-        <input type="text" disabled class="form-control" required id="Money" value="@Model.Money">
+        <label>账户余额：</label>
+        <input type="text" disabled class="form-control" required value="@Model.Money">
+    </div>
+    <div class="form-group">
+        <label>充值金额：</label>
+        <input type="text" class="form-control" required id="Money">
     </div>
     <button id="ccc" class="btn btn-primary">充值</button>
 }
@@ -20,6 +25,26 @@ else
 }
 @section scripts{
     <script>
+        $("#ccc").click(function () {
+            layer.load(2, { shade: false });
+            var data = {
+                ID: $("#ID").val(),
+                Money: $("#Money").val(),
+            }
+            $.post("/Home/ccc", data, function (res) {
+                setTimeout(function () {
+                    layer.closeAll('loading');
+                }, 350);
+                if (res == "success") {
+                    layer.alert("充值成功");
+                    setTimeout(function () {
+                        window.location.href = "/Home/Wallet";
+                    }, 1500);
+                } else {
+                    layer.alert(res);
+                };
+            });
+        });
         $("#GoWallet").click(function () {
             layer.load(2, { shade: false });
             $.post("/Home/GoWallet", function (res) {
