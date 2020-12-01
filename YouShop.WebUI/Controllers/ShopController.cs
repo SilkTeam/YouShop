@@ -9,9 +9,13 @@ namespace YouShop.WebUI.Controllers
     public class ShopController : Controller
     {
         // GET: Shop
-        public ActionResult Index()
+        public ActionResult Order()
         {
-            return View();
+            return Redirect("/Shop/Search");
+        }
+        public ActionResult MyCar()
+        {
+            return Redirect("/Shop/Search");
         }
     }
 }

@@ -56,7 +56,6 @@ namespace YouShop.WebUI.Controllers
 
         [HttpPost]
         public ActionResult Add(Sigin sigin, User user)
-
         {
             if (UserBLL.FindUser(sigin.Account))
                 return Content("用户名已存在");

@@ -189,11 +189,11 @@ namespace YouShop.WebUI.Controllers
                 return Content("修改失败");
             }
         }
-        [HttpPost]
-        public ActionResult Search(Shop shop)
+        //[HttpPost]
+        public ActionResult Search()
         {
-            var list = shopBLL.GetSearch(shop);
-            return View(list);
+            //var list = shopBLL.GetSearch(shop);
+            return View();
         }
         public ActionResult Wallet()
         {

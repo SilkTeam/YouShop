@@ -1,4 +1,4 @@
-﻿@model List<YouShop.Model.Shop>
+﻿
 @{
     if (Session["User"] != null)
     {
@@ -8,26 +8,7 @@
     {
         Layout = "~/Views/Shared/_Layout.cshtml";
     }
-    ViewBag.Title = "Search";
+    ViewBag.Title = "Error";
 }
-<table class="table">
-    <thead>
-        <tr>
-            <th>图片</th>
-            <th>商品名</th>
-            <th>描述</th>
-            <th>价格</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-        <tr>
-            <td><img src="@item.Img" /></td>
-            <td>@item.Name</td>
-            <td>@item.Price</td>
-            <td>@item.Description</td>
-        </tr>
-        }
-    </tbody>
-</table>
+
+<h2>页面正在维护，请稍后再试</h2>
