@@ -119,7 +119,7 @@ namespace YouShop.BLL
         {
             Wallet wallet = new Wallet()
             {
-                Money = 0,
+                Money = 1.68,
             };
             EF.Wallets.Add(wallet);
             var mod = EF.Users.FirstOrDefault(x => x.SiginID == ID);
