@@ -113,7 +113,7 @@ namespace YouShop.BLL
         //find wallet
         public User Wallet(int ID)
         {
-            return EF.Users.FirstOrDefault(x => x.SiginID == ID);
+            return EF.Users.Include("Wallet").FirstOrDefault(x => x.SiginID == ID);
         }
         public bool GoWallet(int ID)
         {
