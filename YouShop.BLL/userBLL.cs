@@ -123,7 +123,7 @@ namespace YouShop.BLL
             };
             EF.Wallets.Add(wallet);
             var mod = EF.Users.FirstOrDefault(x => x.SiginID == ID);
-            mod.WalletID = wallet.ID;
+            mod.WalletID = 1;
             return EF.SaveChanges() > 0;
         }
         public bool ccc(Wallet wallet)
